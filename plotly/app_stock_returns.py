@@ -16,13 +16,36 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
+
+# =========for stock cumulative return plot===========
 dense_ret = pd.read_csv('dense_return2020.csv', index_col=0)
 tickers = list(dense_ret.columns)
-
 fig = px.line(dense_ret[['SPY']].cumsum())
 
+# =========for correlation treemap===========
+merged2 = pd.read_csv('stock_covid_search_pct_change_corr_final.csv', index_col=0)
+fig2 = px.treemap(merged2, 
+                  path=['GICS Sector','GICS Sub-Industry', 'ticker'], 
+                  values='corr abs', color='corr w covid change', 
+                  color_continuous_scale='RdBu',
+                  color_continuous_midpoint=0)
 
+
+# =========for covid timeline events ===========
+timeline_df = pd.read_csv('COVID_timeline.csv')
+dates = list(timeline_df['date'].unique())
+
+
+# ========start layout==========
+# 
 app.layout = html.Div([
+    dcc.Dropdown(
+        id='chosen_date',
+        value=dates[0],
+        options=[{'label':str(i), 'value':i} for i in dates]
+        ),
+    html.Div(id="news"),
+    html.Br(),
 
     dcc.Dropdown(
         id='chosen_ticker',
@@ -35,15 +58,37 @@ app.layout = html.Div([
 
     dcc.Graph(
         id="stock_return",
-        figure = fig)
+        figure = fig),
+
+    html.Br(),
+    html.H4(children=" Stock Correlation with Covid Google Search Trends"),
+    dcc.Graph(
+        id="stock_covid_corr",
+        figure = fig2
+        ),
 
     ])
+
+
+
+@app.callback(
+    Output(component_id='news', component_property='children'),
+    Input(component_id='chosen_date', component_property='value'),
+)
+
+
+def update_output_div(input_value):
+
+    # return input_value
+    news = timeline_df[timeline_df['date']==input_value]['content'].tolist()
+    news = '; '.join(news)
+    
+    return news
 
 @app.callback(
     Output(component_id='stock_return', component_property='figure'),
     Input(component_id='chosen_ticker', component_property='value'),
 )
-
 
 def update_graph(input_value):
     if not input_value:
@@ -51,6 +96,7 @@ def update_graph(input_value):
 
     ret = dense_ret[input_value].cumsum()
     fig = px.line(ret)
+
     fig.update_layout(
         title_text="Stock Return in 2020"
     )
