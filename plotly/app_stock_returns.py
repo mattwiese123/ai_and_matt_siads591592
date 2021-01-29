@@ -119,6 +119,7 @@ app.layout = html.Div([
         ),
     html.Br(),
 
+    html.H4(children=" Choose multiple tickers for visualization"),
     dcc.Dropdown(
         id='chosen_ticker',
         value="SPY",
