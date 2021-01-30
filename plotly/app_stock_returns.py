@@ -101,7 +101,7 @@ fig3.add_vrect(x0="2020-11-09", x1="2020-11-10", col=1,
 
 # ========= Load company information data ===========
 
-comps = pd.read_csv('sp500.csv', index_col=0)
+comps = pd.read_csv('sp500_comp_description.csv', index_col=0)
 
 
 # ==============================
@@ -212,11 +212,8 @@ def update_company_info(input_value):
     comp_des = comps[comps['Symbol'].isin(input_value)]
     texts = []
     for i in range(len(comp_des)):
-        text = comp_des['comp_description'].iloc[i].strip().split('\n')[0]
+        text = comp_des['comp_description2'].iloc[i]
         t = comp_des['Symbol'].iloc[i]
-        if text.startswith('Coordinates:') and len(text.split())<20:
-            text = comp_des['comp_description'].iloc[i].strip().split('\n')[1]
-
         text = t+': '+re.sub(r'\[\d+\]', '', text)
         texts.append(text)
 
