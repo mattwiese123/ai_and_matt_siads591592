@@ -173,9 +173,7 @@ app.layout = html.Div([
     ])
 
 
-# ===============================================
-# ========timeline events dropdown ==============
-# ===============================================
+
 @app.callback(
     Output(component_id='news', component_property='children'),
     Input(component_id='chosen_date', component_property='value'),
@@ -188,9 +186,7 @@ def update_output_div(input_value):
     
     return news
 
-# ===============================================
-# ========ticker viz  ===========================
-# ===============================================
+
 @app.callback(
     Output(component_id='stock_return', component_property='figure'),
     Input(component_id='chosen_ticker', component_property='value'),
@@ -240,7 +236,7 @@ def update_company_info(input_value):
         text = t+': '+re.sub(r'\[\d+\]', '', text)
         texts.append(text)
 
-    return [html.P(x) for x in texts]
+    return '---------------------->'.join(texts)
 
 
 
