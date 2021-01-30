@@ -108,70 +108,73 @@ comps = pd.read_csv('sp500_comp_description.csv', index_col=0)
 # ========start layout==========
 # 
 app.layout = html.Div([
-    
-    # ===============================================
-    # ========timeline events dropdown ==============
-    # ===============================================
-    html.H4(children="Y Covid Timeline Events 2020"),
-    dcc.Dropdown(
-        id='chosen_date',
-        value=dates[0],
-        options=[{'label':str(i), 'value':i} for i in dates]
-        ),
-    html.Div(id="news"),
-    html.Br(),
+    html.H4(children="Covid Timeline Events 2020"),
+    dcc.Tabs([
+        dcc.Tab(label="SPY vs COVID Trends", children=[
+            # ===============================================
+            # ========timeline events dropdown ==============
+            # ===============================================
+            
+            dcc.Dropdown(
+                id='chosen_date',
+                value=dates[0],
+                options=[{'label':str(i), 'value':i} for i in dates]
+                ),
+            html.Div(id="news"),
+            html.Br(),
+        
+            # ===============================================
+            # ========covid search trends viz  ==============
+            # ===============================================
+            html.H4(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
+            dcc.Graph(
+                id="news_searches_spy",
+                figure = fig3
+                ),
+            html.Br(),
+        ]),
 
-    
-    # ===============================================
-    # ========covid search trends viz  ==============
-    # ===============================================
-    html.H4(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
-    dcc.Graph(
-        id="news_searches_spy",
-        figure = fig3
-        ),
-    html.Br(),
+        dcc.Tab(label="Ticker Chooser", children=[
+            # ===============================================
+            # ========ticker chooser           ==============
+            # ===============================================
+            html.H4(children=" Choose multiple tickers for visualization"),
+            dcc.Dropdown(
+                id='chosen_ticker',
+                value="SPY",
+                options=[{'label':str(i), 'value':i} for i in tickers],
+                multi=True
+                ),
 
-    
-    # ===============================================
-    # ========ticker chooser           ==============
-    # ===============================================
-    html.H4(children=" Choose multiple tickers for visualization"),
-    dcc.Dropdown(
-        id='chosen_ticker',
-        value="SPY",
-        options=[{'label':str(i), 'value':i} for i in tickers],
-        multi=True
-        ),
-    
-    html.Br(),
+            html.Br(),
 
-    
-    # ===============================================
-    # ========ticker viz               ==============
-    # ===============================================
-    dcc.Graph(
-        id="stock_return",
-        figure = fig),
 
-    html.Br(),
+            # ===============================================
+            # ========ticker viz               ==============
+            # ===============================================
+            dcc.Graph(
+                id="stock_return",
+                figure = fig),
 
-    html.H4(children=" Company Description for Selected Tickers (from Wikipedia)"),
-    html.Div(id="company_description"),
+            html.Br(),
 
-    html.Br(),
-    
-    # ===============================================
-    # ========treemap ==============
-    # ===============================================
-    html.H4(children=" Stock Correlation with Covid Google Search Trends 2020"),
-    dcc.Graph(
-        id="stock_covid_corr",
-        figure = fig2
-        ),
+            html.H4(children=" Company Description for Selected Tickers (from Wikipedia)"),
+            html.Div(id="company_description"),
 
+            html.Br(),
+        ]),
+        dcc.Tab(label="COVID Correlation Treemap", children=[
+            # ===============================================
+            # ========treemap ==============
+            # ===============================================
+            html.H4(children=" Stock Correlation with Covid Google Search Trends 2020"),
+            dcc.Graph(
+                id="stock_covid_corr",
+                figure = fig2
+                ),
+        ]),
     ])
-
+])
 
 # ===============================================
 # ========timeline events dropdown ==============
