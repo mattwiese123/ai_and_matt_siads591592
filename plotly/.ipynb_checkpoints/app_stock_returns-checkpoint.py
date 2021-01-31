@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-
 # Run this app with `python app.py` and
 # visit http://127.0.0.1:8050/ in your web browser.
 
 import dash
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import dash_html_components as html
 import plotly.express as px
@@ -12,10 +12,13 @@ import pandas as pd
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import re
+import plotly.io as pio
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+pio.templates.default = "plotly_dark"
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+external_stylesheets = [dbc.themes.CYBORG]# ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, title="Covid SPY Trends and Correlation")
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
@@ -31,7 +34,9 @@ fig2 = px.treemap(merged2,
                   path=['GICS Sector','GICS Sub-Industry', 'ticker'], 
                   values='corr abs', color='corr w covid change', 
                   color_continuous_scale='RdBu',
-                  color_continuous_midpoint=0)
+                  color_continuous_midpoint=0,
+                  height=800
+                 )
 
 # =========for covid timeline events ===========
 timeline_df = pd.read_csv('COVID_timeline.csv')
@@ -104,6 +109,11 @@ fig3.add_vrect(x0="2020-11-09", x1="2020-11-10", col=1,
 comps = pd.read_csv('sp500_comp_description.csv', index_col=0)
 
 
+# ======== Fig Themes =============
+fig.layout.template = 'plotly_dark'
+fig2.layout.template = 'plotly_dark'
+fig3.update_layout(template = 'plotly_dark')
+
 # ==============================
 # ========start layout==========
 # 
@@ -173,8 +183,13 @@ app.layout = html.Div([
                 figure = fig2
                 ),
         ]),
-    ])
+    ], 
+    id="tabs",
+    colors={'border':'#ffffff', 'primary':'#333333', 'background':'#000000'}
+    )
 ])
+
+fig3.layout.template = 'plotly_dark'
 
 # ===============================================
 # ========timeline events dropdown ==============
