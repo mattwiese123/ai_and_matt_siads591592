@@ -6,7 +6,7 @@ import pickle
 if __name__ == "__main__":
 
 	# create the serpwow object, passing in our API key
-	ai_api = "51474B8536DD4C7CAE583E33B8B18158"
+	ai_api = "request_online"
 	serpwow = GoogleSearchResults(ai_api)
 
 	# set up a dict for the search parameters
