@@ -248,4 +248,4 @@ def update_company_info(input_value):
 
 
 if __name__ == '__main__':
-    app.run_server(host = '192.168.1.104', port=7506,debug=True)
+    app.run_server(host = '192.168.1.104', port=7506, debug=True)
