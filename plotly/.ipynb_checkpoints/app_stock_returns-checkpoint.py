@@ -118,7 +118,7 @@ fig3.update_layout(template = 'plotly_dark')
 # ========start layout==========
 # 
 app.layout = html.Div([
-    html.H4(children="Covid Timeline Events 2020"),
+    html.H1(children="Covid Timeline Events 2020"),
     dcc.Tabs([
         dcc.Tab(label="SPY vs COVID Trends", children=[
             # ===============================================
@@ -136,7 +136,7 @@ app.layout = html.Div([
             # ===============================================
             # ========covid search trends viz  ==============
             # ===============================================
-            html.H4(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
+            html.H3(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
             dcc.Graph(
                 id="news_searches_spy",
                 figure = fig3
@@ -148,7 +148,7 @@ app.layout = html.Div([
             # ===============================================
             # ========ticker chooser           ==============
             # ===============================================
-            html.H4(children=" Choose multiple tickers for visualization"),
+            html.H3(children=" Choose multiple tickers for visualization"),
             dcc.Dropdown(
                 id='chosen_ticker',
                 value="SPY",
@@ -177,7 +177,7 @@ app.layout = html.Div([
             # ===============================================
             # ========treemap ==============
             # ===============================================
-            html.H4(children=" Stock Correlation with Covid Google Search Trends 2020"),
+            html.H3(children=" Stock Correlation with Covid Google Search Trends 2020"),
             dcc.Graph(
                 id="stock_covid_corr",
                 figure = fig2
@@ -202,9 +202,11 @@ def update_output_div(input_value):
 
     # return input_value
     news = timeline_df[timeline_df['date']==input_value]['content'].tolist()
-    news = '; '.join(news)
+    # news = '; '.join(news)
+    news_items = [html.H6(x) for x in news]
+    news_items.insert(0, html.H5('COVID Related Headlines for ' + str(input_value)))
     
-    return news
+    return news_items
 
 # ===============================================
 # ========ticker viz  ===========================
@@ -255,10 +257,11 @@ def update_company_info(input_value):
     for i in range(len(comp_des)):
         text = comp_des['comp_description2'].iloc[i]
         t = comp_des['Symbol'].iloc[i]
-        text = t+': '+re.sub(r'\[\d+\]', '', text)
-        texts.append(text)
+        texts.append(html.H6(t))
+        #text = t+': '+re.sub(r'\[\d+\]', '', text)
+        texts.append(html.P(re.sub(r'\[\d+\]', '', text)))
 
-    return [html.P(x) for x in texts]
+    return texts # [html.P(x) for x in texts]
 
 
 
