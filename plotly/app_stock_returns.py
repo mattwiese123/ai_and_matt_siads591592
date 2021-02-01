@@ -13,6 +13,10 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import re
 import plotly.io as pio
+import base64 
+import datetime
+import numpy as np
+import json
 
 pio.templates.default = "plotly_dark"
 
@@ -108,6 +112,159 @@ fig3.add_vrect(x0="2020-11-09", x1="2020-11-10", col=1,
 
 comps = pd.read_csv('sp500_comp_description.csv', index_col=0)
 
+# ======= News Timeline ===========
+# https://gist.github.com/bendichter/d7dccacf55c7d95aec05c6e7bcf4e66e
+
+def display_year(df,
+                 year: int = None,
+                 month_lines: bool = True,
+                 fig=None,
+                 row: int = None):
+    
+    def timeline_helper(i):
+        x = df[df['date'] == pd.to_datetime(i)]['content'].str.strip().to_list()
+        return 'Headlines: <br>'+'<br>'.join(x)
+    
+    if year is None:
+        year = datetime.datetime.now().year
+  
+    # data[:len(df['date'])] = df['date']
+    
+
+    d1 = datetime.date(year, 1, 1)
+    d2 = datetime.date(year, 12, 31)
+
+    df['date'] = pd.to_datetime(df['date'])
+    data = np.ones(365) * np.nan
+    for i in range(len(data)):
+        if pd.to_datetime(d1 + datetime.timedelta(i)) in [datetime.date(2020,3,13), datetime.date(2020,11,16)]:
+            data[i] = 0.5
+        elif (pd.to_datetime(d1 + datetime.timedelta(i)) in df['date'].unique()):
+            # print(d1 + datetime.timedelta(i), df['date'].unique())
+            data[i] = 1
+        else:
+            data[i] = 0
+            
+    
+    delta = d2 - d1
+    
+    month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    month_days =   [31,    28,    31,     30,    31,     30,    31,    31,    30,    31,    30,    31]
+    month_positions = (np.cumsum(month_days) - 15)/7
+
+    dates_in_year = [d1 + datetime.timedelta(i) for i in range(delta.days+1)] #gives me a list with datetimes for each day a year
+    weekdays_in_year = [i.weekday() for i in dates_in_year] #gives [0,1,2,3,4,5,6,0,1,2,3,4,5,6,…] (ticktext in xaxis dict translates this to weekdays
+    
+    weeknumber_of_dates = [int(i.strftime("%V")) if not (int(i.strftime("%V")) == 1 and i.month == 12) else 53
+                           for i in dates_in_year] #gives [1,1,1,1,1,1,1,2,2,2,2,2,2,2,…] name is self-explanatory
+    text = ['date: ' + str(i) + '<br>' + timeline_helper(i) if pd.to_datetime(i) in df['date'].unique()
+            else 'date: ' + str(i) 
+            for i in dates_in_year]
+    #text = [str(i) for i in dates_in_year] #gives something like list of strings like ‘2018-01-25’ for each date. Used in data trace to make good hovertext.
+    ttext = []
+    #4cc417 green #347c17 dark green
+    colorscale=[[0, '#eeeeee'], [0.5, '#34eb6b'], [1, '#513569']]
+    
+    # handle end of year
+    
+
+    data = [
+        go.Heatmap(
+            x=weeknumber_of_dates,
+            y=weekdays_in_year,
+            z=data,
+            text=text,
+            hoverinfo='text',
+            xgap=3, # this
+            ygap=3, # and this is used to make the grid-like apperance
+            showscale=False,
+            colorscale=colorscale
+        )
+    ]
+    
+        
+    if month_lines:
+        kwargs = dict(
+            mode='lines',
+            line=dict(
+                color='#9e9e9e',
+                width=1
+            ),
+            hoverinfo='skip'
+            
+        )
+        for date, dow, wkn in zip(dates_in_year,
+                                  weekdays_in_year,
+                                  weeknumber_of_dates):
+            if date.day == 1:
+                data += [
+                    go.Scatter(
+                        x=[wkn-.5, wkn-.5],
+                        y=[dow-.5, 6.5],
+                        **kwargs
+                    )
+                ]
+                if dow:
+                    data += [
+                    go.Scatter(
+                        x=[wkn-.5, wkn+.5],
+                        y=[dow-.5, dow - .5],
+                        **kwargs
+                    ),
+                    go.Scatter(
+                        x=[wkn+.5, wkn+.5],
+                        y=[dow-.5, -.5],
+                        **kwargs
+                    )
+                ]
+                    
+                    
+    layout = go.Layout(
+        title='NYT COVID Headline Activity Chart',
+        height=250,
+        width=1250,
+        yaxis=dict(
+            showline=False, showgrid=False, zeroline=False,
+            tickmode='array',
+            ticktext=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            tickvals=[0, 1, 2, 3, 4, 5, 6],
+            autorange="reversed"
+        ),
+        xaxis=dict(
+            showline=False, showgrid=False, zeroline=False,
+            tickmode='array',
+            ticktext=month_names,
+            tickvals=month_positions
+        ),
+        font={'size':10, 'color':'#9e9e9e'},
+        plot_bgcolor=('#fff'),
+        margin = dict(t=40),
+        showlegend=False
+    )
+
+    if fig is None:
+        fig = go.Figure(data=data, layout=layout)
+    else:
+        fig.add_traces(data, rows=[(row+1)]*len(data), cols=[1]*len(data))
+        fig.update_layout(layout)
+        fig.update_xaxes(layout['xaxis'])
+        fig.update_yaxes(layout['yaxis'])
+
+    
+    return fig
+
+
+def display_years(z, years):
+    fig = make_subplots(rows=len(years), cols=1, subplot_titles=years)
+    for i, year in enumerate(years):
+        data = z[i*365 : (i+1)*365]
+        display_year(data, year=year, fig=fig, row=i)
+        fig.update_layout(height=250*len(years))
+    return fig
+fig4 = px.timeline(timeline_df, x_start='date', x_end='shifted_date', y='content')
+z = np.random.randint(2, size=(500,))
+fig5 = display_years(timeline_df, (2020,))
+
 
 # ======== Fig Themes =============
 fig.layout.template = 'plotly_dark'
@@ -130,7 +287,7 @@ app.layout = html.Div([
                 value=dates[0],
                 options=[{'label':str(i), 'value':i} for i in dates]
                 ),
-            html.Div(id="news"),
+            html.Div(id="news", style={'display':'inline-block',}),
             html.Br(),
         
             # ===============================================
@@ -143,12 +300,33 @@ app.layout = html.Div([
                 ),
             html.Br(),
         ]),
-
+        dcc.Tab(label='Headline Timeline',
+                children=[
+                    dbc.Row([
+                        dbc.Col([
+                            html.H3('Timeline of News'),
+                            dcc.Graph(
+                                id="news_tl",
+                                figure = fig5
+                            ),
+                        ]), 
+                        dbc.Col(
+                            html.Div(id='hover_boi'),
+                        )]
+                    ),
+                    # html.H3('Timeline of News'),
+                    # dcc.Graph(
+                    #     id="news_tl",
+                    #     figure = fig5
+                    # ),
+                    #html.Div(id='hover_boi'),
+                    html.Br(),
+        ]),
         dcc.Tab(label="Ticker Chooser", children=[
             # ===============================================
             # ========ticker chooser           ==============
             # ===============================================
-            html.H3(children=" Choose multiple tickers for visualization"),
+            html.H3(children="Choose multiple tickers for visualization"),
             dcc.Dropdown(
                 id='chosen_ticker',
                 value="SPY",
@@ -201,12 +379,22 @@ fig3.layout.template = 'plotly_dark'
 def update_output_div(input_value):
 
     # return input_value
-    news = timeline_df[timeline_df['date']==input_value]['content'].tolist()
-    # news = '; '.join(news)
-    news_items = [html.H6(x) for x in news]
-    news_items.insert(0, html.H5('COVID Related Headlines for ' + str(input_value)))
+    month = str(input_value)[5:8]
+    if month[0] == '0':
+        img_month = month[1]
+    else:
+        img_month = month[:2]
+    image_filename = 'NYT_News_2020_M'+img_month+'.jpg'
+    #encoded_image = base64.b64encode(open(image_filename, 'rb').read())
     
-    return news_items
+    news = timeline_df[timeline_df['date']==input_value]['content'].tolist()
+    news_items = [html.Div(html.H6(x)) for x in news]
+    news_items.insert(0, html.H5('COVID Related Headlines for ' + str(input_value)))
+    # news_items.append(html.Div(html.Img(src=app.get_asset_url(image_filename))))
+    # news_items.append(html.H5(img_month))
+    
+    return dbc.Row([dbc.Col(news_items), 
+                    dbc.Col(html.Div(html.Img(src=app.get_asset_url(image_filename), height=400, width=400)))])
 
 # ===============================================
 # ========ticker viz  ===========================
@@ -263,7 +451,21 @@ def update_company_info(input_value):
 
     return texts # [html.P(x) for x in texts]
 
-
+@app.callback(
+    Output(component_id='hover_boi', component_property='children'),
+    [Input(component_id='news_tl', component_property='hoverData')]
+)
+def dis_play_hover_data(hover_data):
+    try:
+        x = json.loads(json.dumps(hover_data, indent=2))['points'][0]['text']
+        image_month = str(int(x[11:13]))
+        image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
+        return html.Img(src=app.get_asset_url(image_filename), height=400, width=400)
+    except:
+        image_month = '1'
+        image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
+        return html.Img(src=app.get_asset_url(image_filename), height=400, width=400)
+        
 
 if __name__ == '__main__':
     app.run_server(host = '192.168.1.104', port=7506, debug=True)

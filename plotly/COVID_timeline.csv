@@ -1,245 +1,245 @@
-,date,content
-0,2020-01-09,"WHO Announces Mysterious Coronavirus-Related Pneumonia in Wuhan, China
-"
-1,2020-01-20,"CDC Says 3 US Airports Will Begin Screening for Coronavirus
-"
-2,2020-01-21,"CDC Confirms First US Coronavirus Case
-"
-3,2020-01-21,"Chinese Scientist Confirms COVID-19 Human Transmission
-"
-4,2020-01-23,"Wuhan Now Under Quarantine
-"
-5,2020-01-31,"WHO Issues Global Health Emergency
-"
-6,2020-02-02,"Global Air Travel Is Restricted
-"
-7,2020-02-03,"US Declares Public Health Emergency
-"
-8,2020-02-10,"China’s COVID-19 Deaths Exceed Those of SARS Crisis
-"
-9,2020-02-25,"CDC Says COVID-19 Is Heading Toward Pandemic Status
-"
-10,2020-03-06,"21 Passengers on California Cruise Ship Test Positive
-"
-11,2020-03-11,"WHO Declares COVID-19 a Pandemic
-"
-12,2020-03-13,"Trump Declares COVID-19 a National Emergency
-"
-13,2020-03-13,"Travel Ban on Non-US Citizens Traveling From Europe Goes Into Effect
-"
-14,2020-03-17,"University of Minnesota Begins Testing Hydroxychloroquine
-"
-15,2020-03-17,"CMS Temporarily Expands Use of Telehealth 
-"
-16,2020-03-17,"Administration Asks Congress to Send Americans Direct Financial Relief
-"
-17,2020-03-19,"California Issues Statewide Stay-at-Home Order
-"
-18,2020-03-24,"With Clinical Trials on Hold, Innovation Stalls
-"
-19,2020-03-25,"Reports Find Extended Shutdowns Can Delay Second Wave
-"
-20,2020-03-26,"Senate Passes CARES Act
-"
-21,2020-03-27,"Trump Signs CARES Act Into Law
-"
-22,2020-03-30,"FDA Authorizes Use of Hydroxychloroquine
-"
-23,2020-03-31,"COVID-19 Can Be Transmitted Through the Eye
-"
-24,2020-04-08,"Troubles With the COVID-19 Cocktail
-"
-25,2020-04-16,"“Gating Criteria” Emerge as a Way to Reopen the Economy
-"
-26,2020-04-28,"Young, Poor Avoid Care for COVID-19 Symptoms
-"
-27,2020-04-29,"NIH Trial Shows Early Promise for Remdesivir
-"
-28,2020-05-01,"Remdesivir Wins EUA
-"
-29,2020-05-09,"Saliva-Based Diagnostic Test Allowed for At-Home Use 
-"
-30,2020-05-12,"Death Toll Likely Underestimated, Fauci Testifies
-"
-31,2020-05-21,"United States and AstraZeneca Form Vaccine Deal
-"
-32,2020-05-28,"US COVID-19 Deaths Pass the 100,000 Mark
-"
-33,2020-06-04,"Lancet, NEJM Retract COVID-19 Studies on Hydroxychloroquine
-"
-34,2020-06-10,"US COVID-19 Cases Reach 2 Million
-"
-35,2020-06-16,"HHS Announces COVID-19 Vaccine Doses Will Be Free for Some
-"
-36,2020-06-18,"WHO Ends Study Into Hydroxychloroquine
-"
-37,2020-06-20,"NIH Halts Trial of Hydroxychloroquine
-"
-38,2020-06-22,"Study Suggests 80% of Cases in March Went Undetected
-"
-39,2020-06-26,"White House Coronavirus Task Force Addresses Rising Cases in the South
-"
-40,2020-06-29,"Gilead Sets Price for Remdesivir at $3120
-"
-41,2020-06-30,"Fauci Warns New COVID-19 Cases Could Hit 100,000 a Day
-"
-42,2020-07-02,"States Reverse Reopening Plans
-"
-43,2020-07-06,"Scientists, Citing Airborne Transmission, Ask WHO to Revise Guidance
-"
-44,2020-07-07,"CMS Plans to Pay More for Home Dialysis Equipment
-"
-45,2020-07-07,"US Surpasses 3 Million Infections, Begins WHO Withdrawal
-"
-46,2020-07-09,"WHO Announces COVID-19 Can Be Airborne
-"
-47,2020-07-14,"States With COVID-19 Spikes Report Greatest Health Insurance Coverage Losses
-"
-48,2020-07-14,"Early Moderna Data Point to Vaccine Candidate’s Efficacy
-"
-49,2020-07-15,"New Hospital Data Reporting Protocol Prompts Concern
-"
-50,2020-07-16,"US Reports New Record of Daily COVID-19 Cases
-"
-51,2020-07-20,"Diagnostic Delays From COVID-19 May Increase Cancer-Related Deaths
-"
-52,2020-07-21,"Vaccines From AstraZeneca, CanSino Biologics Show Promising Results
-"
-53,2020-07-22,"HHS, DOD Announce Vaccine Distribution Agreement With Pfizer and BioNTech
-"
-54,2020-07-23,"Antibody Levels Drop After First 3 Months of COVID-19 Infection
-"
-55,2020-07-23,"Antibody Cocktail May Treat, Prevent COVID-19
-"
-56,2020-07-27,"Moderna Vaccine Begins Phase 3 Trial, Receives $472M From Trump Administration
-"
-57,2020-07-27,"Senate Introduces HEALS Act
-"
-58,2020-07-29,"FDA Grants Truvian EUA for Rapid Antibody Test
-"
-59,2020-08-03,"New US Pandemic Phase; US to Pay Sanofi, GlaxoSmithKline $2B for Vaccine
-"
-60,2020-08-04,"Rural Hotspots Face Lack of Intensive Care Unit Beds
-"
-61,2020-08-07,"Talks Stall on Second Relief Package
-"
-62,2020-08-11,"Trump Administration Reaches Deal With Moderna
-"
-63,2020-08-12,"Severe Obesity Increases Mortality Risk From COVID-19
-"
-64,2020-08-13,"Biden Calls for 3-Month Mask Mandate
-"
-65,2020-08-15,"FDA Approves Saliva Test
-"
-66,2020-08-17,"COVID-19 Now the Third-Leading Cause of Death in the US
-"
-67,2020-08-23,"Convalescent Plasma Is Cleared for Use by FDA
-"
-68,2020-08-24,"Remdesivir’s Clinical Benefits Questioned
-"
-69,2020-08-25,"CDC Changes Testing Guidance, but Later Reverses Itself
-"
-70,2020-08-26,"FDA Grants EUA to Abbott’s Rapid Test
-"
-71,2020-08-28,"First Known Case of COVID-19 Reinfection Reported in the US
-"
-72,2020-09-01,"US Rejects WHO Global COVID-19 Vaccine Effort
-"
-73,2020-09-03,"Steroids Reduce Mortality in Severe Cases; Sanofi, GSK Begin Human Vaccine Trials
-"
-74,2020-09-03,"Bioethicists Weigh In on Equitable Vaccine Distribution
-"
-75,2020-09-08,"AstraZeneca Halts Phase 3 Vaccine Trial
-"
-76,2020-09-14,"US Airports Stop Screening International Travelers
-"
-77,2020-09-14,"Pfizer, BioNTech Expand Phase 3 Trial
-"
-78,2020-09-14,"NIH Launches Investigation Into Halted Astrazeneca Trial
-"
-79,2020-09-15,"CDC Reports on Spread of COVID-19 at Restaurants
-"
-80,2020-09-16,"Trump Administration Releases Vaccine Distribution Plan
-"
-81,2020-09-17,"Europe Reports Rising COVID-19 Cases
-"
-82,2020-09-21,"CDC Pulls Guidance Saying COVID-19 Transmission Is Airborne
-"
-83,2020-09-21,"Johnson & Johnson Begins Phase 3 Vaccine Trial
-"
-84,2020-09-23,"A New, More Contagious Strain of COVID-19 Is Discovered
-"
-85,2020-09-25,"Midwest States See Increase in COVID-19 Cases
-"
-86,2020-09-28,"Global COVID-19 Deaths Surpass 1 Million
-"
-87,2020-09-29,"HHS to Distribute 100 Million Rapid Tests to States
-"
-88,2020-09-29,"Regeneron Announces Positive Results for Monoclonal Antibody Treatment
-"
-89,2020-10-02,"Trump, First Lady Test Positive for COVID-19; Trump Enters Hospital
-"
-90,2020-10-05,"Trump Leaves Hospital, Continues Receiving Treatment
-"
-91,2020-10-08,"NEJM Criticizes Trump’s COVID-19 Response; 39 States See Case Spikes
-"
-92,2020-10-08,"More Americans Trust Biden to Lead Health Care System
-"
-93,2020-10-08,"White House COVID-19 Outbreak Grows to 34
-"
-94,2020-10-09,"US Signs Deal With AstraZeneca
-"
-95,2020-10-12,"Johnson & Johnson Halts Vaccine Trial
-"
-96,2020-10-15,"US Cases Spike Again; Studies Connect Blood Type and COVID-19 Risk
-"
-97,2020-10-19,"Global Cases Top 40 Million
-"
-98,2020-10-22,"FDA Approves Remdesivir as First COVID-19 Drug
-"
-99,2020-10-23,"AstraZeneca and Johnson & Johnson Announce Restart of COVID-19 Vaccine Trials
-"
-100,2020-10-28,"CMS Issues Vaccine, Treatment Coverage Rules
-"
-101,2020-11-04,"US Reports Unprecedented 100,000 Cases in 1 Day
-"
-102,2020-11-05,"Study Predicts Difficulties in Nationwide COVID-19 Immunity
-"
-103,2020-11-09,"President-Elect Biden Announces COVID-19 Transition Team; Pfizer Publishes Vaccine Results
-"
-104,2020-11-09,"FDA Issues EUA for Eli Lilly’s Antibody Treatment
-"
-105,2020-11-11,"Indoor Venues Responsible for Much of COVID-19’s Spread
-"
-106,2020-11-16,"Moderna Reveals Vaccine Efficacy Results
-"
-107,2020-11-16,"FDA to Move Rapidly on EUAs for Pfizer, Moderna Vaccines
-"
-108,2020-11-17,"Fauci Highlights the Need for Long-term Follow-up of COVID-19 Effects
-"
-109,2020-11-18,"Pfizer, BioNTech Vaccine Is 95% Effective
-"
-110,2020-11-20,"Pfizer, BioNTech Submit EUA Application; CDC Warns Against Holiday Travel
-"
-111,2020-11-23,"AstraZeneca Reports Vaccine Is 90% Effective; FDA Grants EUA for Second Antibody Treatment
-"
-112,2020-12-10,"FDA Advisory Panel Recommends Pfizer, BioNTech COVID-19 Vaccine
-"
-113,2020-12-11,"FDA Agrees to EUA for COVID-19 Vaccine From Pfizer, BioNTech
-"
-114,2020-12-17,"FDA Panel Backs Moderna COVID-19 Vaccine
-"
-115,2020-12-18,"FDA Signs Off on EUA for Moderna's COVID-19 Vaccine
-"
-116,2020-12-21,"New COVID-19 Variant Circling the UK
-"
-117,2020-12-23,"US Buys More Pfizer Vaccine
-"
-118,2020-12-28,"Novavax Starts Phase 3 Trial of COVID-19 Vaccine
-"
-119,2020-12-29,"First US Case of New COVID-19 Variant Found in Colorado
-"
-120,2020-12-30,"UK Approves Emergency Authorization for the AstraZeneca and Oxford COVID-19 Vaccine
-"
-121,2020-12-31,"US Falls Short of Goal to Give 20 Million Vaccinations by Year End
-"
+,Unnamed: 0,date,content,shifted_date
+0,0,2020-01-09,"WHO Announces Mysterious Coronavirus-Related Pneumonia in Wuhan, China
+",2020-01-10
+1,1,2020-01-20,"CDC Says 3 US Airports Will Begin Screening for Coronavirus
+",2020-01-21
+2,2,2020-01-21,"CDC Confirms First US Coronavirus Case
+",2020-01-22
+3,3,2020-01-21,"Chinese Scientist Confirms COVID-19 Human Transmission
+",2020-01-22
+4,4,2020-01-23,"Wuhan Now Under Quarantine
+",2020-01-24
+5,5,2020-01-31,"WHO Issues Global Health Emergency
+",2020-02-01
+6,6,2020-02-02,"Global Air Travel Is Restricted
+",2020-02-03
+7,7,2020-02-03,"US Declares Public Health Emergency
+",2020-02-04
+8,8,2020-02-10,"China’s COVID-19 Deaths Exceed Those of SARS Crisis
+",2020-02-11
+9,9,2020-02-25,"CDC Says COVID-19 Is Heading Toward Pandemic Status
+",2020-02-26
+10,10,2020-03-06,"21 Passengers on California Cruise Ship Test Positive
+",2020-03-07
+11,11,2020-03-11,"WHO Declares COVID-19 a Pandemic
+",2020-03-12
+12,12,2020-03-13,"Trump Declares COVID-19 a National Emergency
+",2020-03-14
+13,13,2020-03-13,"Travel Ban on Non-US Citizens Traveling From Europe Goes Into Effect
+",2020-03-14
+14,14,2020-03-17,"University of Minnesota Begins Testing Hydroxychloroquine
+",2020-03-18
+15,15,2020-03-17,"CMS Temporarily Expands Use of Telehealth 
+",2020-03-18
+16,16,2020-03-17,"Administration Asks Congress to Send Americans Direct Financial Relief
+",2020-03-18
+17,17,2020-03-19,"California Issues Statewide Stay-at-Home Order
+",2020-03-20
+18,18,2020-03-24,"With Clinical Trials on Hold, Innovation Stalls
+",2020-03-25
+19,19,2020-03-25,"Reports Find Extended Shutdowns Can Delay Second Wave
+",2020-03-26
+20,20,2020-03-26,"Senate Passes CARES Act
+",2020-03-27
+21,21,2020-03-27,"Trump Signs CARES Act Into Law
+",2020-03-28
+22,22,2020-03-30,"FDA Authorizes Use of Hydroxychloroquine
+",2020-03-31
+23,23,2020-03-31,"COVID-19 Can Be Transmitted Through the Eye
+",2020-04-01
+24,24,2020-04-08,"Troubles With the COVID-19 Cocktail
+",2020-04-09
+25,25,2020-04-16,"“Gating Criteria” Emerge as a Way to Reopen the Economy
+",2020-04-17
+26,26,2020-04-28,"Young, Poor Avoid Care for COVID-19 Symptoms
+",2020-04-29
+27,27,2020-04-29,"NIH Trial Shows Early Promise for Remdesivir
+",2020-04-30
+28,28,2020-05-01,"Remdesivir Wins EUA
+",2020-05-02
+29,29,2020-05-09,"Saliva-Based Diagnostic Test Allowed for At-Home Use 
+",2020-05-10
+30,30,2020-05-12,"Death Toll Likely Underestimated, Fauci Testifies
+",2020-05-13
+31,31,2020-05-21,"United States and AstraZeneca Form Vaccine Deal
+",2020-05-22
+32,32,2020-05-28,"US COVID-19 Deaths Pass the 100,000 Mark
+",2020-05-29
+33,33,2020-06-04,"Lancet, NEJM Retract COVID-19 Studies on Hydroxychloroquine
+",2020-06-05
+34,34,2020-06-10,"US COVID-19 Cases Reach 2 Million
+",2020-06-11
+35,35,2020-06-16,"HHS Announces COVID-19 Vaccine Doses Will Be Free for Some
+",2020-06-17
+36,36,2020-06-18,"WHO Ends Study Into Hydroxychloroquine
+",2020-06-19
+37,37,2020-06-20,"NIH Halts Trial of Hydroxychloroquine
+",2020-06-21
+38,38,2020-06-22,"Study Suggests 80% of Cases in March Went Undetected
+",2020-06-23
+39,39,2020-06-26,"White House Coronavirus Task Force Addresses Rising Cases in the South
+",2020-06-27
+40,40,2020-06-29,"Gilead Sets Price for Remdesivir at $3120
+",2020-06-30
+41,41,2020-06-30,"Fauci Warns New COVID-19 Cases Could Hit 100,000 a Day
+",2020-07-01
+42,42,2020-07-02,"States Reverse Reopening Plans
+",2020-07-03
+43,43,2020-07-06,"Scientists, Citing Airborne Transmission, Ask WHO to Revise Guidance
+",2020-07-07
+44,44,2020-07-07,"CMS Plans to Pay More for Home Dialysis Equipment
+",2020-07-08
+45,45,2020-07-07,"US Surpasses 3 Million Infections, Begins WHO Withdrawal
+",2020-07-08
+46,46,2020-07-09,"WHO Announces COVID-19 Can Be Airborne
+",2020-07-10
+47,47,2020-07-14,"States With COVID-19 Spikes Report Greatest Health Insurance Coverage Losses
+",2020-07-15
+48,48,2020-07-14,"Early Moderna Data Point to Vaccine Candidate’s Efficacy
+",2020-07-15
+49,49,2020-07-15,"New Hospital Data Reporting Protocol Prompts Concern
+",2020-07-16
+50,50,2020-07-16,"US Reports New Record of Daily COVID-19 Cases
+",2020-07-17
+51,51,2020-07-20,"Diagnostic Delays From COVID-19 May Increase Cancer-Related Deaths
+",2020-07-21
+52,52,2020-07-21,"Vaccines From AstraZeneca, CanSino Biologics Show Promising Results
+",2020-07-22
+53,53,2020-07-22,"HHS, DOD Announce Vaccine Distribution Agreement With Pfizer and BioNTech
+",2020-07-23
+54,54,2020-07-23,"Antibody Levels Drop After First 3 Months of COVID-19 Infection
+",2020-07-24
+55,55,2020-07-23,"Antibody Cocktail May Treat, Prevent COVID-19
+",2020-07-24
+56,56,2020-07-27,"Moderna Vaccine Begins Phase 3 Trial, Receives $472M From Trump Administration
+",2020-07-28
+57,57,2020-07-27,"Senate Introduces HEALS Act
+",2020-07-28
+58,58,2020-07-29,"FDA Grants Truvian EUA for Rapid Antibody Test
+",2020-07-30
+59,59,2020-08-03,"New US Pandemic Phase; US to Pay Sanofi, GlaxoSmithKline $2B for Vaccine
+",2020-08-04
+60,60,2020-08-04,"Rural Hotspots Face Lack of Intensive Care Unit Beds
+",2020-08-05
+61,61,2020-08-07,"Talks Stall on Second Relief Package
+",2020-08-08
+62,62,2020-08-11,"Trump Administration Reaches Deal With Moderna
+",2020-08-12
+63,63,2020-08-12,"Severe Obesity Increases Mortality Risk From COVID-19
+",2020-08-13
+64,64,2020-08-13,"Biden Calls for 3-Month Mask Mandate
+",2020-08-14
+65,65,2020-08-15,"FDA Approves Saliva Test
+",2020-08-16
+66,66,2020-08-17,"COVID-19 Now the Third-Leading Cause of Death in the US
+",2020-08-18
+67,67,2020-08-23,"Convalescent Plasma Is Cleared for Use by FDA
+",2020-08-24
+68,68,2020-08-24,"Remdesivir’s Clinical Benefits Questioned
+",2020-08-25
+69,69,2020-08-25,"CDC Changes Testing Guidance, but Later Reverses Itself
+",2020-08-26
+70,70,2020-08-26,"FDA Grants EUA to Abbott’s Rapid Test
+",2020-08-27
+71,71,2020-08-28,"First Known Case of COVID-19 Reinfection Reported in the US
+",2020-08-29
+72,72,2020-09-01,"US Rejects WHO Global COVID-19 Vaccine Effort
+",2020-09-02
+73,73,2020-09-03,"Steroids Reduce Mortality in Severe Cases; Sanofi, GSK Begin Human Vaccine Trials
+",2020-09-04
+74,74,2020-09-03,"Bioethicists Weigh In on Equitable Vaccine Distribution
+",2020-09-04
+75,75,2020-09-08,"AstraZeneca Halts Phase 3 Vaccine Trial
+",2020-09-09
+76,76,2020-09-14,"US Airports Stop Screening International Travelers
+",2020-09-15
+77,77,2020-09-14,"Pfizer, BioNTech Expand Phase 3 Trial
+",2020-09-15
+78,78,2020-09-14,"NIH Launches Investigation Into Halted Astrazeneca Trial
+",2020-09-15
+79,79,2020-09-15,"CDC Reports on Spread of COVID-19 at Restaurants
+",2020-09-16
+80,80,2020-09-16,"Trump Administration Releases Vaccine Distribution Plan
+",2020-09-17
+81,81,2020-09-17,"Europe Reports Rising COVID-19 Cases
+",2020-09-18
+82,82,2020-09-21,"CDC Pulls Guidance Saying COVID-19 Transmission Is Airborne
+",2020-09-22
+83,83,2020-09-21,"Johnson & Johnson Begins Phase 3 Vaccine Trial
+",2020-09-22
+84,84,2020-09-23,"A New, More Contagious Strain of COVID-19 Is Discovered
+",2020-09-24
+85,85,2020-09-25,"Midwest States See Increase in COVID-19 Cases
+",2020-09-26
+86,86,2020-09-28,"Global COVID-19 Deaths Surpass 1 Million
+",2020-09-29
+87,87,2020-09-29,"HHS to Distribute 100 Million Rapid Tests to States
+",2020-09-30
+88,88,2020-09-29,"Regeneron Announces Positive Results for Monoclonal Antibody Treatment
+",2020-09-30
+89,89,2020-10-02,"Trump, First Lady Test Positive for COVID-19; Trump Enters Hospital
+",2020-10-03
+90,90,2020-10-05,"Trump Leaves Hospital, Continues Receiving Treatment
+",2020-10-06
+91,91,2020-10-08,"NEJM Criticizes Trump’s COVID-19 Response; 39 States See Case Spikes
+",2020-10-09
+92,92,2020-10-08,"More Americans Trust Biden to Lead Health Care System
+",2020-10-09
+93,93,2020-10-08,"White House COVID-19 Outbreak Grows to 34
+",2020-10-09
+94,94,2020-10-09,"US Signs Deal With AstraZeneca
+",2020-10-10
+95,95,2020-10-12,"Johnson & Johnson Halts Vaccine Trial
+",2020-10-13
+96,96,2020-10-15,"US Cases Spike Again; Studies Connect Blood Type and COVID-19 Risk
+",2020-10-16
+97,97,2020-10-19,"Global Cases Top 40 Million
+",2020-10-20
+98,98,2020-10-22,"FDA Approves Remdesivir as First COVID-19 Drug
+",2020-10-23
+99,99,2020-10-23,"AstraZeneca and Johnson & Johnson Announce Restart of COVID-19 Vaccine Trials
+",2020-10-24
+100,100,2020-10-28,"CMS Issues Vaccine, Treatment Coverage Rules
+",2020-10-29
+101,101,2020-11-04,"US Reports Unprecedented 100,000 Cases in 1 Day
+",2020-11-05
+102,102,2020-11-05,"Study Predicts Difficulties in Nationwide COVID-19 Immunity
+",2020-11-06
+103,103,2020-11-09,"President-Elect Biden Announces COVID-19 Transition Team; Pfizer Publishes Vaccine Results
+",2020-11-10
+104,104,2020-11-09,"FDA Issues EUA for Eli Lilly’s Antibody Treatment
+",2020-11-10
+105,105,2020-11-11,"Indoor Venues Responsible for Much of COVID-19’s Spread
+",2020-11-12
+106,106,2020-11-16,"Moderna Reveals Vaccine Efficacy Results
+",2020-11-17
+107,107,2020-11-16,"FDA to Move Rapidly on EUAs for Pfizer, Moderna Vaccines
+",2020-11-17
+108,108,2020-11-17,"Fauci Highlights the Need for Long-term Follow-up of COVID-19 Effects
+",2020-11-18
+109,109,2020-11-18,"Pfizer, BioNTech Vaccine Is 95% Effective
+",2020-11-19
+110,110,2020-11-20,"Pfizer, BioNTech Submit EUA Application; CDC Warns Against Holiday Travel
+",2020-11-21
+111,111,2020-11-23,"AstraZeneca Reports Vaccine Is 90% Effective; FDA Grants EUA for Second Antibody Treatment
+",2020-11-24
+112,112,2020-12-10,"FDA Advisory Panel Recommends Pfizer, BioNTech COVID-19 Vaccine
+",2020-12-11
+113,113,2020-12-11,"FDA Agrees to EUA for COVID-19 Vaccine From Pfizer, BioNTech
+",2020-12-12
+114,114,2020-12-17,"FDA Panel Backs Moderna COVID-19 Vaccine
+",2020-12-18
+115,115,2020-12-18,"FDA Signs Off on EUA for Moderna's COVID-19 Vaccine
+",2020-12-19
+116,116,2020-12-21,"New COVID-19 Variant Circling the UK
+",2020-12-22
+117,117,2020-12-23,"US Buys More Pfizer Vaccine
+",2020-12-24
+118,118,2020-12-28,"Novavax Starts Phase 3 Trial of COVID-19 Vaccine
+",2020-12-29
+119,119,2020-12-29,"First US Case of New COVID-19 Variant Found in Colorado
+",2020-12-30
+120,120,2020-12-30,"UK Approves Emergency Authorization for the AstraZeneca and Oxford COVID-19 Vaccine
+",2020-12-31
+121,121,2020-12-31,"US Falls Short of Goal to Give 20 Million Vaccinations by Year End
+",2021-01-01
