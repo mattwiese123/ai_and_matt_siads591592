@@ -22,7 +22,7 @@ pio.templates.default = "plotly_dark"
 
 external_stylesheets = [dbc.themes.CYBORG]# ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, title="Covid SPY Trends and Correlation")
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, title="Covid SPY NYT Trends")
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
@@ -107,6 +107,7 @@ fig3.add_vrect(x0="2020-03-13", x1="2020-03-14", col=1,
 fig3.add_vrect(x0="2020-11-09", x1="2020-11-10", col=1,
               annotation_text="pfizer vaccine result", annotation_position="top left",
               fillcolor="green", opacity=0.5, line_width=0)
+fig3.update_layout(width=1250, height=400, title='SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)')
 
 # ========= Load company information data ===========
 
@@ -228,6 +229,7 @@ def display_year(df,
             tickmode='array',
             ticktext=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             tickvals=[0, 1, 2, 3, 4, 5, 6],
+            ticklabelposition='outside left',
             autorange="reversed"
         ),
         xaxis=dict(
@@ -236,9 +238,9 @@ def display_year(df,
             ticktext=month_names,
             tickvals=month_positions
         ),
-        font={'size':10, 'color':'#9e9e9e'},
+        font={'size':10, 'color':'white'}, # #9e9e9e
         plot_bgcolor=('#fff'),
-        margin = dict(t=40),
+        margin = dict(t=40, pad=3),
         showlegend=False
     )
 
@@ -250,7 +252,7 @@ def display_year(df,
         fig.update_xaxes(layout['xaxis'])
         fig.update_yaxes(layout['yaxis'])
 
-    
+    fig['layout'].update(plot_bgcolor='rgb(17,17,17)')
     return fig
 
 
@@ -261,10 +263,13 @@ def display_years(z, years):
         display_year(data, year=year, fig=fig, row=i)
         fig.update_layout(height=250*len(years))
     return fig
-fig4 = px.timeline(timeline_df, x_start='date', x_end='shifted_date', y='content')
-z = np.random.randint(2, size=(500,))
+
 fig5 = display_years(timeline_df, (2020,))
 
+
+# big_fig = make_subplots(rows=2, cols=1)
+# big_fig.add_trace(fig3, row=1, col=1)
+# big_fig.add_trace(fig5, row=2, col=1)
 
 # ======== Fig Themes =============
 fig.layout.template = 'plotly_dark'
@@ -277,49 +282,28 @@ fig3.update_layout(template = 'plotly_dark')
 app.layout = html.Div([
     html.H1(children="Covid Timeline Events 2020"),
     dcc.Tabs([
-        dcc.Tab(label="SPY vs COVID Trends", children=[
-            # ===============================================
-            # ========timeline events dropdown ==============
-            # ===============================================
-            
-            dcc.Dropdown(
-                id='chosen_date',
-                value=dates[0],
-                options=[{'label':str(i), 'value':i} for i in dates]
-                ),
-            html.Div(id="news", style={'display':'inline-block',}),
-            html.Br(),
-        
-            # ===============================================
-            # ========covid search trends viz  ==============
-            # ===============================================
-            html.H3(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
-            dcc.Graph(
-                id="news_searches_spy",
-                figure = fig3
-                ),
-            html.Br(),
-        ]),
         dcc.Tab(label='Headline Timeline',
                 children=[
                     dbc.Row([
                         dbc.Col([
-                            html.H3('Timeline of News'),
+                            # html.H3('COVID News Timeline'),
                             dcc.Graph(
                                 id="news_tl",
                                 figure = fig5
                             ),
+                            dcc.Graph(
+                            id="news_searches_spy",
+                            figure = fig3
+                        ),
                         ]), 
                         dbc.Col(
                             html.Div(id='hover_boi'),
                         )]
                     ),
-                    # html.H3('Timeline of News'),
-                    # dcc.Graph(
-                    #     id="news_tl",
-                    #     figure = fig5
-                    # ),
-                    #html.Div(id='hover_boi'),
+                   html.Div([
+                        # html.H3(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
+                        
+                   ]),
                     html.Br(),
         ]),
         dcc.Tab(label="Ticker Chooser", children=[
@@ -372,10 +356,12 @@ fig3.layout.template = 'plotly_dark'
 # ===============================================
 # ========timeline events dropdown ==============
 # ===============================================
+'''
 @app.callback(
     Output(component_id='news', component_property='children'),
     Input(component_id='chosen_date', component_property='value'),
 )
+
 def update_output_div(input_value):
 
     # return input_value
@@ -395,7 +381,30 @@ def update_output_div(input_value):
     
     return dbc.Row([dbc.Col(news_items), 
                     dbc.Col(html.Div(html.Img(src=app.get_asset_url(image_filename), height=400, width=400)))])
-
+dcc.Tab(label="SPY vs COVID Trends", children=[
+            # ===============================================
+            # ========timeline events dropdown ==============
+            # ===============================================
+            
+            dcc.Dropdown(
+                id='chosen_date',
+                value=dates[0],
+                options=[{'label':str(i), 'value':i} for i in dates]
+                ),
+            html.Div(id="news", style={'display':'inline-block',}),
+            html.Br(),
+        
+            # ===============================================
+            # ========covid search trends viz  ==============
+            # ===============================================
+            html.H3(children=" SPY Cumulative Return vs COVID Search Trends in 2020 (Weekly)"),
+            dcc.Graph(
+                id="news_searches_spys",
+                figure = fig3
+                ),
+            html.Br(),
+        ]),
+'''
 # ===============================================
 # ========ticker viz  ===========================
 # ===============================================
@@ -460,11 +469,13 @@ def dis_play_hover_data(hover_data):
         x = json.loads(json.dumps(hover_data, indent=2))['points'][0]['text']
         image_month = str(int(x[11:13]))
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return html.Img(src=app.get_asset_url(image_filename), height=400, width=400)
+        return [html.H3('NYT Abstracts ' + str(datetime.date(2020,int(image_month),1).strftime('%b, %Y'))), 
+                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
     except:
         image_month = '1'
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return html.Img(src=app.get_asset_url(image_filename), height=400, width=400)
+        return [html.H3('NYT Abstracts Jan, 2020'), 
+                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
         
 
 if __name__ == '__main__':
