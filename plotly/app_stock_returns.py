@@ -28,12 +28,12 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets, title="Covi
 # see https://plotly.com/python/px-arguments/ for more options
 
 # =========for stock cumulative return plot===========
-dense_ret = pd.read_csv('dense_return2020.csv', index_col=0)
+dense_ret = pd.read_csv('./dense_return2020.csv', index_col=0)
 tickers = list(dense_ret.columns)
 fig = px.line(dense_ret[['SPY']].cumsum())
 
 # =========for correlation treemap===========
-merged2 = pd.read_csv('stock_covid_search_pct_change_corr_final.csv', index_col=0)
+merged2 = pd.read_csv('./stock_covid_search_pct_change_corr_final.csv', index_col=0)
 fig2 = px.treemap(merged2, 
                   path=['GICS Sector','GICS Sub-Industry', 'ticker'], 
                   values='corr abs', color='corr w covid change', 
@@ -43,13 +43,13 @@ fig2 = px.treemap(merged2,
                  )
 
 # =========for covid timeline events ===========
-timeline_df = pd.read_csv('COVID_timeline.csv')
+timeline_df = pd.read_csv('./COVID_timeline.csv')
 dates = list(timeline_df['date'].unique())
 
 # =========covid news in NYT vs. Google searches vs. SPY cum. return====================
 spy_ret = pd.DataFrame(dense_ret['SPY'])
 spy_ret.index = pd.to_datetime(spy_ret.index)
-covid_search = pd.read_csv('covid_search_trend.csv', index_col=0)
+covid_search = pd.read_csv('./covid_search_trend.csv', index_col=0)
 covid_search.index = pd.to_datetime(covid_search.index)
 
 wkly_return = spy_ret.cumsum().resample('W').sum()
@@ -60,7 +60,7 @@ spy_covid.columns = ['spy_return%', 'COVID_search']
 spy_covid['spy_return%'] = spy_covid['spy_return%']*100
 spy_covid = spy_covid.dropna()
 
-news_count = pd.read_csv('NYTnews_keyword_monthly.csv', index_col=0)
+news_count = pd.read_csv('./NYTnews_keyword_monthly.csv', index_col=0)
 news_count['date'] = '2020-'+news_count['month'].astype(str)+'-15'
 news_count['date'] = pd.to_datetime(news_count['date'])
 
@@ -111,7 +111,7 @@ fig3.update_layout(width=1250, height=400, title='SPY Cumulative Return vs COVID
 
 # ========= Load company information data ===========
 
-comps = pd.read_csv('sp500_comp_description.csv', index_col=0)
+comps = pd.read_csv('./sp500_comp_description.csv', index_col=0)
 
 # ======= News Timeline ===========
 # https://gist.github.com/bendichter/d7dccacf55c7d95aec05c6e7bcf4e66e
@@ -280,7 +280,7 @@ fig3.update_layout(template = 'plotly_dark')
 # ========start layout==========
 # 
 app.layout = html.Div([
-    html.H1(children="Covid Timeline Events 2020"),
+    html.H1(children="News, Google Searches and Stock Market"),
     dcc.Tabs([
         dcc.Tab(label='Headline Timeline',
                 children=[
@@ -288,13 +288,13 @@ app.layout = html.Div([
                         dbc.Col([
                             # html.H3('COVID News Timeline'),
                             dcc.Graph(
-                                id="news_tl",
-                                figure = fig5
-                            ),
-                            dcc.Graph(
                             id="news_searches_spy",
                             figure = fig3
                         ),
+                            dcc.Graph(
+                                id="news_tl",
+                                figure = fig5
+                            ),
                         ]), 
                         dbc.Col(
                             html.Div(id='hover_boi'),
@@ -310,7 +310,8 @@ app.layout = html.Div([
             # ===============================================
             # ========ticker chooser           ==============
             # ===============================================
-            html.H3(children="Choose multiple tickers for visualization"),
+            html.Br(),
+            html.H4(children="Choose multiple tickers for visualization"),
             dcc.Dropdown(
                 id='chosen_ticker',
                 value="SPY",
@@ -339,7 +340,8 @@ app.layout = html.Div([
             # ===============================================
             # ========treemap ==============
             # ===============================================
-            html.H3(children=" Stock Correlation with Covid Google Search Trends 2020"),
+            html.Br(),
+            html.H4(children=" Stock Correlation with Covid Google Search Trends 2020"),
             dcc.Graph(
                 id="stock_covid_corr",
                 figure = fig2
@@ -349,7 +351,8 @@ app.layout = html.Div([
     id="tabs",
     colors={'border':'#ffffff', 'primary':'#333333', 'background':'#000000'}
     )
-])
+],
+    style={'marginLeft': 20, 'marginRight': 20, 'marginTop': 20, 'marginBottom': 10,})
 
 fig3.layout.template = 'plotly_dark'
 
@@ -469,13 +472,23 @@ def dis_play_hover_data(hover_data):
         x = json.loads(json.dumps(hover_data, indent=2))['points'][0]['text']
         image_month = str(int(x[11:13]))
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return [html.H3('NYT Abstracts ' + str(datetime.date(2020,int(image_month),1).strftime('%b, %Y'))), 
-                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
+        return [html.Br(),
+        html.H4('NYT Abstracts Word Cloud ' + str(datetime.date(2020,int(image_month),1).strftime('%b, %Y')),
+        style={'textAlign': 'center'}), 
+        html.Div([
+            html.Img(src=app.get_asset_url(image_filename), height=500, width=500),
+            ], style={'textAlign': 'center'})
+        ]
     except:
         image_month = '1'
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return [html.H3('NYT Abstracts Jan, 2020'), 
-                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
+        return [html.Br(),
+        html.H4('NYT Abstracts Word Cloud Jan, 2020',
+            style={'textAlign': 'center'}), 
+        html.Div([
+            html.Img(src=app.get_asset_url(image_filename), height=500, width=500),
+            ], style={'textAlign': 'center'})
+        ]
         
 
 if __name__ == '__main__':
