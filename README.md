@@ -2,6 +2,7 @@
 SIADS 591 and 592 project
 
 <img align="right" src="images/umsi-logo-vert-u.png">
+
 [![Deon badge](https://img.shields.io/badge/ethics%20checklist-deon-brightgreen.svg?style=popout-square)](http://deon.drivendata.org/)
 
 
