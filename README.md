@@ -15,3 +15,5 @@ The questions we want to answer include:
 1. How has the importance/dominance of COVID, as reflected through the lens of news coverage and Google searches, changed over time? 
 2. To what extent does the aggregate stock market respond to COVID-related development (e.g., surge in number of news/searches mentioning COVID) and key events (e.g., initial virus outbreak, vaccine progress)? 
 3. What are the common characteristics among stocks impacted most positively/negatively by COVID? 
+
+[Ethics Checklist](ETHICS.md)
