@@ -1,6 +1,9 @@
 # ai_and_matt_siads591592
 SIADS 591 and 592 project
 
+[![Deon badge](https://img.shields.io/badge/ethics%20checklist-deon-brightgreen.svg?style=popout-square)](http://deon.drivendata.org/)
+
+
 ## Project Summary
 2020 has been a tough year with the outbreak of COVID-19. We want to study to what extent the financial market has been impacted by the pandemic. On Nov. 9th 2020 when Pfizer announced the vaccine candidate against COVID-19 achieved a better than expected accuracy rate there was a big impact on the financial market. Previously winning stocks became losing and vice versa. Although the S&P 500 didn’t  seem to have a big swing, many portfolios (especially those market-neutral ones) suffered significantly from this rotation. 
 
