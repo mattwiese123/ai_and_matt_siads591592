@@ -349,7 +349,9 @@ app.layout = html.Div([
     id="tabs",
     colors={'border':'#ffffff', 'primary':'#333333', 'background':'#000000'}
     )
-])
+],
+    style={'marginLeft': 20, 'marginRight': 20, 'marginTop': 20, 'marginBottom': 10,})
+)
 
 fig3.layout.template = 'plotly_dark'
 
@@ -467,16 +469,25 @@ def update_company_info(input_value):
 def dis_play_hover_data(hover_data):
     try:
         x = json.loads(json.dumps(hover_data, indent=2))['points'][0]['text']
-        image_month = str(int(x[11:13]))
+        image_month = str(int(x[11:13])) 
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return [html.H3('NYT Abstracts ' + str(datetime.date(2020,int(image_month),1).strftime('%b, %Y'))), 
-                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
+        return [html.Br(),
+                html.H4('NYT Abstracts Word Cloud ' + str(datetime.date(2020,int(image_month),1).strftime('%b, %Y')),
+                 style={'textAlign': 'center'}),
+                 html.Div([
+                     html.Img(src=app.get_asset_url(image_filename), height=500, width=500),
+                     ], style={'textAlign': 'center'})
+                 ]
     except:
         image_month = '1'
         image_filename = 'NYT_News_2020_M'+image_month+'.jpg'
-        return [html.H3('NYT Abstracts Jan, 2020'), 
-                html.Img(src=app.get_asset_url(image_filename), height=500, width=500)]
-        
+        return [html.Br(),
+                html.H4('NYT Abstracts Word Cloud Jan, 2020',
+                    style={'textAlign': 'center'}),
+                 html.Div([
+                     html.Img(src=app.get_asset_url(image_filename), height=500, width=500),
+                     ], style={'textAlign': 'center'})
+                 ]
 
 if __name__ == '__main__':
     app.run_server(host = '192.168.1.104', port=7506, debug=True)
